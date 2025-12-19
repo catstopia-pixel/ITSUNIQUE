@@ -1,235 +1,314 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNIQUE | AI 기반 입시·학습 전략 하이브리드 교육</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css"> 
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNIQUE | 데이터 기반 초개인화 입시·학습 관리</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <header id="navbar">
-        <div class="container">
-            <a href="#" class="logo">UNIQUE<span style="color: var(--color-accent);">.</span></a>
-            <nav>
-                <a href="#services">서비스</a>
-                <a href="#why-uniq">차별점</a>
-                <a href="#how-it-works">과정</a>
-                <a href="#faq">FAQ</a>
-            </nav>
-            <a href="tel:01067510320" class="cta-button nav-cta" target="_blank" rel="noopener">전화로 빠른 상담</a>
-        </div>
-    </header>
+  <header id="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo" aria-label="UNIQUE 홈">UNIQUE<span class="logo-dot">.</span></a>
 
-    <section id="hero" class="is-visible">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1 id="hero-headline">
-                    감으로 공부하지 마세요.<br>
-                    이제, AI 데이터로 입시와 학습을 설계하세요.
-                </h1>
-                <p id="hero-subcopy">
-                    ITS UNIQUE은 AI 분석을 기반으로 입시 전략을 설계하고, 상위 2% 엘리트 강사진은 UNIQUE AI 전문과정을 통해 데이터형 수업과 전통적 교수 방식을 결합해 실제 학습까지 책임지는 하이브리드 교육 모델을 제공합니다.
-                </p>
-                <div class="hero-cta-group">
-                    <a href="#final-cta" class="cta-button">AI기반 학습&컨설팅 과정보기</a>
-                    <a href="#why-uniq" class="cta-button cta-secondary">UNIQUE만의 차별점</a>
-                </div>
-                <ul class="hero-bullets">
-                    <li><span class="material-icons" style="font-size: 1rem; vertical-align: middle; color: var(--color-accent);">check_circle</span> 데이터 기반</li>
-                    <li><span class="material-icons" style="font-size: 1rem; vertical-align: middle; color: var(--color-accent);">check_circle</span> 하이브리드 모델</li>
-                    <li><span class="material-icons" style="font-size: 1rem; vertical-align: middle; color: var(--color-accent);">check_circle</span> 상위 2% 강사진</li>
-                </ul>
-                <div class="typing-container">
-                    <span class="typing-label">AI가 읽어내는 것:</span>
-                    <span id="typing-output"></span>
-                </div>
-            </div>
+      <nav class="nav-links" aria-label="주요 섹션">
+        <a href="#services">서비스</a>
+        <a href="#why-uniq">차별점</a>
+        <a href="#how-it-works">관리 과정</a>
+        <a href="#faq">FAQ</a>
+      </nav>
 
-            <div class="hero-visual card">
-                <h3 style="color: var(--color-accent); font-size: 1.3rem;">AI 분석 리포트 미리보기</h3>
-                <div class="data-point">
-                    목표 대학 적합도: <span class="count-up-target" data-target="87" data-unit="%">87</span>%
-                </div>
-                <div class="data-point">
-                    위험 과목 지수: <span class="count-up-target" data-target="28" data-unit="%">28</span>%
-                </div>
-                <div class="data-point">
-                    강점 과목(수학) 데이터 포인트: <span class="count-up-target" data-target="4500" data-unit="회">4500</span>회
-                </div>
-                <div style="text-align: center; margin-top: var(--spacing-s);">
-                    <svg viewBox="0 0 100 20" style="width: 100%; height: 20px;">
-                        <polyline points="0,10 10,5 20,15 30,5 40,15 50,10 60,5 70,15 80,5 90,15 100,10"
-                                  style="fill:none; stroke:var(--color-accent); stroke-width:1;"/>
-                        <circle cx="20" cy="15" r="2" fill="var(--color-primary)"/>
-                        <circle cx="80" cy="5" r="2" fill="var(--color-primary)"/>
-                    </svg>
-                    <p style="font-size: 0.85rem; color: var(--color-light-text);">AI Data Stream Active (24/7)</p>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="nav-cta-group">
+        <a href="tel:01067510320" class="cta-button nav-cta" rel="noopener">유선 상담</a>
+        <a href="http://pf.kakao.com/_RPMLG/chat" class="cta-button nav-cta cta-secondary" target="_blank" rel="noopener">
+          카카오톡 문의
+        </a>
+      </div>
+    </div>
+  </header>
 
-    <section id="pain-points" class="container">
-        <h2>학습 방향성, 입시 설계가 고민이신가요?.</h2>
-        <div class="grid-3">
-            <div class="pain-point-item card">
-                <h3>경험적 조언에 의존하는 현장</h3>
-                <p>객관적인 데이터 없이 주변 조언이나 막연한 불안감에 의존하고 있지는 않나요?</p>
-            </div>
-            <div class="pain-point-item card">
-                <h3>노력 대비 낮은 성과</h3>
-                <p>열심히 해도 성적이 제자리라면, 노력의 방향이 잘못되었을 가능성이 높습니다.</p>
-            </div>
-            <div class="pain-point-item card">
-                <h3>강사의 역량 편차</h3>
-                <p>데이터 리터러시가 부족한 강사가 과거의 경험만으로 학생을 지도하고 있지는 않나요?</p>
-            </div>
-        </div>
-    </section>
+  <!-- HERO -->
+  <section id="hero" class="section hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow">학부모가 신뢰할 수 있는 관리 시스템</p>
 
-    <section id="services" class="container">
-        <h2>UNIQUE의 하이브리드 교육 시스템</h2>
-        <div class="grid-3">
-            <div class="service-card card slide-in-up">
-                <span class="material-icons service-icon">analytics</span>
-                <h3>AI 기반 입시·학습 진단 테스트</h3>
-                <p>최신 입시 데이터와 학생의 미세 학습 패턴까지 분석하여 강점/약점/잠재력을 정밀 진단합니다.</p>
-            </div>
-            <div class="service-card card slide-in-up">
-                <span class="material-icons service-icon">person_search</span>
-                <h3>1:1 입시·학습 전략 컨설팅</h3>
-                <p>AI 리포트를 해석하고, 학생 맞춤형 최적의 학습 우선순위와 입시 로드맵을 설계합니다.</p>
-            </div>
-            <div class="service-card card slide-in-up">
-                <span class="material-icons service-icon">school</span>
-                <h3>UNIQUE Hybrid AI Learning — AI 데이터형 수업 + 전통적 교수 방식</h3>
-                <p>AI가 제시한 방향을 상위 2% 강사가 수업으로 구현하고, 피드백을 AI가 재분석합니다.</p>
-            </div>
+        <h1 id="hero-headline">
+          문법을 가르치지 않습니다.<br />
+          <span class="accent">출제자의 사고를 읽는 힘</span>을 훈련합니다.
+        </h1>
+
+        <p id="hero-subcopy">
+          UNIQUE는 문법·해석 중심의 단기 학습이 아닌,
+          <strong>글의 구조와 출제 의도를 파악하는 ‘통역사적 사고 훈련’</strong>으로
+          난이도에 흔들리지 않는 입시 대응력을 완성합니다.
+          <br />
+          <span class="muted">감이 아닌 이유로 문제를 푸는 힘, 그 차이가 결과를 만듭니다.</span>
+        </p>
+
+        <div class="hero-highlight card reveal">
+          <p class="hero-highlight-title">
+            <span class="material-icons" aria-hidden="true">public</span>
+            국제학교·유학·고급 인재 트랙 지원
+          </p>
+          <p class="muted hero-highlight-desc">
+            학교/국가별 요구 기준을 분석해 <strong>학업·활동·서류</strong>를 하나의 로드맵으로 통합 관리합니다.
+            국내 입시뿐 아니라, <strong>글로벌 기준의 성취와 서류 완성도</strong>까지 함께 설계합니다.
+          </p>
         </div>
 
-        <div style="margin-top: var(--spacing-m);">
-            <div class="add-on-card card">
-                <span class="material-icons" style="color: var(--color-accent); font-size: 1.5rem; vertical-align: middle; margin-right: 10px;">forum</span>
-                <span style="font-weight: 700; color: var(--color-primary);">진로·적성·정서 AI 챗봇 (부가 서비스)</span>
-                <p style="margin-top: 10px; color: var(--color-text);">학업 스트레스 관리와 초기 진로/적성 상담을 위한 24시간 AI 챗봇 지원 서비스입니다.</p>
-            </div>
+        <div class="hero-cta-group">
+          <a href="tel:01067510320" class="cta-button">유선 상담</a>
+          <a href="http://pf.kakao.com/_RPMLG/chat" class="cta-button cta-secondary" target="_blank" rel="noopener">카카오톡 문의</a>
+          <a href="#how-it-works" class="cta-button cta-secondary">관리 과정 보기</a>
         </div>
-    </section>
 
-    <section id="why-uniq" class="container">
-        <h2>압도적인 차별점. UNIQUE가 결과로 증명합니다.</h2>
-        <div class="grid-3">
-            <div class="why-card card slide-in-up">
-                <span class="material-icons icon">workspace_premium</span>
-                <h3>상위 2% 엘리트 강사진</h3>
-                <p>최고의 실력을 갖춘 강사진이<br> 수업을 이끌어갑니다.</p>
-            </div>
-            <div class="why-card card slide-in-up">
-                <span class="material-icons icon">auto_stories</span>
-                <h3>AI 전문과정 100% 이수 강사진</h3>
-                <p>모든 강사는 AI 데이터 분석 및 활용 능력을 검증받은 전문가입니다.</p>
-            </div>
-            <div class="why-card card slide-in-up">
-                <span class="material-icons icon">scatter_plot</span>
-                <h3>데이터 기반 의사결정</h3>
-                <p>경험 위주의 주관적인 판단이 아닌 객관적인 AI 지표로 오직 성공 확률이 높은 전략만 제시합니다.</p>
-            </div>
+        <ul class="hero-bullets" aria-label="핵심 키워드">
+          <li><span class="material-icons bullet-icon" aria-hidden="true">check_circle</span> 데이터 기반 관리</li>
+          <li><span class="material-icons bullet-icon" aria-hidden="true">check_circle</span> 국내 상위 2% 강사진</li>
+          <li><span class="material-icons bullet-icon" aria-hidden="true">check_circle</span> 글로벌 트랙 대응</li>
+        </ul>
+
+        <div class="typing-container" aria-label="AI가 관리하는 항목 예시">
+          <span class="typing-label">AI 관리 항목 예시:</span>
+          <span id="typing-output" class="typing-output" aria-live="polite"></span>
         </div>
-    </section>
+      </div>
 
-    <section id="how-it-works" class="container">
-        <h2>AI와 협업하는 4단계 과정</h2>
-        <div class="flow-container">
-            <svg class="svg-data-flow" viewBox="0 0 1000 2" preserveAspectRatio="none" style="position: absolute; top: 40px; left: 0;">
-                <polyline id="flow-line-path" points="50,1 275,1 500,1 725,1 950,1"></polyline>
-            </svg>
-            
-            <div class="flow-step">
-                <div class="step-visual" style="background-color: var(--color-accent);">1</div>
-                <h3 style="color: var(--color-accent);">AI 진단 입력</h3>
-                <p>학생의 학습 이력 및 시험 데이터 입력</p>
-            </div>
-            <div class="flow-step">
-                <div class="step-visual">2</div>
-                <h3>AI 정밀 분석</h3>
-                <p>데이터 기반으로 취약점, 잠재력, 입시 적합도 분석</p>
-            </div>
-            <div class="flow-step">
-                <div class="step-visual" style="background-color: var(--color-accent);">3</div>
-                <h3 style="color: var(--color-accent);">전략 컨설팅</h3>
-                <p>실제 강사진(AI 활용 전문가)이 최적의 전략을 설계</p>
-            </div>
-            <div class="flow-step">
-                <div class="step-visual">4</div>
-                <h3>하이브리드 수업 환경 구현</h3>
-                <p>전략 기반 수업 실행 및 AI의 성과 재분석</p>
-            </div>
+      <div class="hero-visual card reveal">
+        <div class="card-head">
+          <h3>학생 관리 대시보드 미리보기</h3>
+          <p class="muted">정밀 진단 → 개인 설계 → 실행 관리 → 결과 검증</p>
         </div>
-    </section>
 
-    <section id="case-studies" class="container">
-        <h2>학생 변화 사례</h2>
-        <div class="grid-2">
-            <div class="case-card card slide-in-up">
-                <h3>"수학 3등급 → 1등급 점프"</h3>
-                <p>"AI가 발견한 숨겨진 개념 오류를 강사님이 정확히 짚어주셔서, 3개월 만에 점수가 올랐습니다." (고2 학생)</p>
-                <div style="font-weight: 700; color: var(--color-primary); margin-top: 10px;">AI의 데이터 분석이 핵심 문제를 해결했습니다.</div>
-            </div>
-            <div class="case-card card slide-in-up">
-                <h3>"막연했던 N수 전략 수립"</h3>
-                <p>"작년에 감으로 준비하다 실패했는데, UNIQ 덕분에 데이터 기반으로 냉철하게 전략을 세워 목표 대학에 합격했습니다." (N수생)</p>
-                <div style="font-weight: 700; color: var(--color-primary); margin-top: 10px;">경험 의존을 끊고 데이터가 길을 알려주었습니다.</div>
-            </div>
+        <div class="data-list" role="list">
+          <div class="data-point" role="listitem">
+            목표 대학 적합도
+            <span class="data-value">
+              <span class="count-up-target" data-target="87" data-unit="%">0</span>
+            </span>
+          </div>
+          <div class="data-point" role="listitem">
+            취약 영역 개선 우선순위
+            <span class="data-value">
+              <span class="count-up-target" data-target="3" data-unit="개">0</span>
+            </span>
+          </div>
+          <div class="data-point" role="listitem">
+            개인 맞춤 문제지 생성
+            <span class="data-value">
+              <span class="count-up-target" data-target="12" data-unit="세트">0</span>
+            </span>
+          </div>
         </div>
-    </section>
 
-    <section id="faq" class="container">
-        <h2>자주 묻는 질문</h2>
-        <div class="faq-list">
-            <div class="faq-item slide-in-up">
-                <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-a1" data-target="faq-a1">
-                    <span>AI 전문 과정은 무엇인가요?</span>
-                    <span class="material-icons faq-icon">add</span>
-                </div>
-                <div class="faq-answer" id="faq-a1" aria-hidden="true">
-                    <p>UNIQ 강사진이 AI 분석 리포트를 정확히 이해하고 수업에 적용할 수 있도록 필수적으로 이수해야 하는 데이터 리터러시 및 전략 적용 교육 프로그램입니다.</p>
-                </div>
-            </div>
-            <div class="faq-item slide-in-up">
-                <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-a2" data-target="faq-a2">
-                    <span>테스트는 학생에게만 필요한가요?</span>
-                    <span class="material-icons faq-icon">add</span>
-                </div>
-                <div class="faq-answer" id="faq-a2" aria-hidden="true">
-                    <p>학생과 학부모 모두에게 필요합니다. 학생은 자신의 취약점을 파악하고, 학부모는 자녀의 객관적인 전략을 이해하고 지원할 수 있게 됩니다.</p>
-                </div>
-            </div>
-            <div class="faq-item slide-in-up">
-                <div class="faq-question" role="button" aria-expanded="false" aria-controls="faq-a3" data-target="faq-a3">
-                    <span>부가 서비스(챗봇)도 AI 강사가 관리하나요?</span>
-                    <span class="material-icons faq-icon">add</span>
-                </div>
-                <div class="faq-answer" id="faq-a3" aria-hidden="true">
-                    <p>부가 서비스 챗봇은 1차적인 진로, 정서 지원을 위해 설계된 AI 도구입니다. 심층적인 진로/학습 문제는 1:1 컨설팅 시간에 담당 강사님과 논의하게 됩니다.</p>
-                </div>
-            </div>
+        <div class="sparkline" aria-hidden="true">
+          <svg viewBox="0 0 100 24" width="100%" height="24" preserveAspectRatio="none">
+            <polyline points="0,14 10,10 20,18 30,8 40,16 50,12 60,9 70,17 80,7 90,14 100,10"
+              fill="none" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+          <p class="muted tiny">Data Stream Active</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="final-cta" class="is-visible">
-        <div class="container">
-            <h2>지금, ITS UNIQUE의 특별함을 경험해보세요.</h2>
-            <a href="tel:01067510320" 
-            class="cta-button"
-            target="_blank"
-            rel="noopener">지금바로 전화 상담</a>
+  <!-- TRUST / PAIN POINTS -->
+  <section id="pain-points" class="section">
+    <div class="container">
+      <h2 class="section-title">“조언”이 아니라, 관리가 필요하신가요</h2>
+      <p class="section-desc">
+        UNIQUE는 고가의 감각적 컨설팅이 아니라,
+        <strong>데이터 기반으로 학생 전 과정을 안정적으로 관리</strong>합니다.
+      </p>
+
+      <div class="grid-3">
+        <div class="card reveal">
+          <h3>경험 의존형 지도</h3>
+          <p>근거 없는 조언이 아니라, 학생 데이터로 학습 방향을 확정합니다.</p>
         </div>
-    </section>
+        <div class="card reveal">
+          <h3>노력 대비 정체</h3>
+          <p>학습 패턴을 분석해, 성적이 오르지 않는 이유부터 제거합니다.</p>
+        </div>
+        <div class="card reveal">
+          <h3>국제 트랙의 복잡성</h3>
+          <p>학교·국가별 요구 기준을 분해해 학업·활동·서류를 하나의 로드맵으로 정리합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- SERVICES -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2 class="section-title">대표 서비스</h2>
+      <p class="section-desc">입시·유학·서류까지, 목표에 맞춰 한 시스템으로 관리합니다.</p>
+
+      <div class="grid-3">
+        <div class="card reveal service-card">
+          <span class="material-icons service-icon" aria-hidden="true">school</span>
+          <h3>수능 영어 · 입시 영어</h3>
+          <p>출제 구조 분석 → 개인별 점수 전략 관리</p>
+        </div>
+        <div class="card reveal service-card">
+          <span class="material-icons service-icon" aria-hidden="true">psychology</span>
+          <h3>LEET</h3>
+          <p>논리·사고 패턴 분석 → 구조 중심 사고력 훈련</p>
+        </div>
+        <div class="card reveal service-card">
+          <span class="material-icons service-icon" aria-hidden="true">public</span>
+          <h3>국제학교 · 유학 관리</h3>
+          <p>학교별 기준 분석 → 학업·활동·서류 통합 관리</p>
+        </div>
+      </div>
+
+      <div class="grid-2 mt">
+        <div class="card reveal">
+          <h3>생기부 · 자기소개서</h3>
+          <p>활동 이력 데이터화 → 평가 기준에 맞춘 구조적 설계</p>
+        </div>
+        <div class="card reveal">
+          <h3>AI 협업 맞춤 관리</h3>
+          <p>이해도 기반 개념 관리 · 커스텀 문제지 제작 · 성과 분석 및 전략 조정</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY UNIQUE -->
+  <section id="why-uniq" class="section">
+    <div class="container">
+      <h2 class="section-title">차별점</h2>
+      <p class="section-desc">
+        아이를 맡길 수 있는 기준, UNIQUE는 <strong>구조로 증명</strong>합니다.
+      </p>
+
+      <div class="grid-3">
+        <div class="card reveal">
+          <span class="material-icons icon" aria-hidden="true">workspace_premium</span>
+          <h3>글로벌 기준으로 설계</h3>
+          <p>수능 영어 만점 동시통역사이자 글로벌 NGO 대표가 ‘글로벌 인재 양성’을 목표로 설계했습니다.</p>
+        </div>
+        <div class="card reveal">
+          <span class="material-icons icon" aria-hidden="true">verified</span>
+          <h3>국내 상위 2% 강사진</h3>
+          <p>실력과 강의력이 검증된 엘리트 강사진만으로 운영합니다.</p>
+        </div>
+        <div class="card reveal">
+          <span class="material-icons icon" aria-hidden="true">insights</span>
+          <h3>데이터 기반 초개인화</h3>
+          <p>경험적 조언이 아닌 데이터 분석으로, 전략을 설계하고 끝까지 관리합니다.</p>
+        </div>
+      </div>
+
+      <div class="note card reveal mt">
+        <p><strong>문법·해석 중심(X)</strong> → <strong>글의 구조·출제 의도 파악(O)</strong></p>
+        <p class="muted">국내 입시는 물론, 국제 트랙에서도 ‘구조적 읽기’는 핵심 경쟁력입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="section">
+    <div class="container">
+      <h2 class="section-title">AI 협업 4단계 학생 관리 프로세스</h2>
+      <p class="section-desc">AI는 데이터를 정밀하게 만들고, 강사진은 전략을 설계하고 관리합니다.</p>
+
+      <div class="flow">
+        <div class="flow-step card reveal">
+          <div class="step-visual">1</div>
+          <h3>정밀 진단</h3>
+          <p>학습 수준·패턴·목표를 데이터로 정밀 분석</p>
+        </div>
+
+        <div class="flow-step card reveal">
+          <div class="step-visual">2</div>
+          <h3>개인 맞춤 설계</h3>
+          <p>과목별 전략·로드맵·관리 포인트를 개인별로 설계</p>
+        </div>
+
+        <div class="flow-step card reveal">
+          <div class="step-visual">3</div>
+          <h3>실행 관리</h3>
+          <p>진행 상황을 추적·보정하며 학습을 끝까지 유지</p>
+        </div>
+
+        <div class="flow-step card reveal">
+          <div class="step-visual">4</div>
+          <h3>결과 검증 및 조정</h3>
+          <p>성과를 검증하고 전략을 즉각적으로 최적화</p>
+        </div>
+      </div>
+
+      <div class="mini-cta card reveal mt">
+        <p><strong>AI는 판단하지 않습니다.</strong> 관리를 정밀하게 만들 뿐입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="container">
+      <h2 class="section-title">자주 묻는 질문</h2>
+
+      <div class="faq-list">
+        <div class="faq-item card reveal">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a1">
+            <span>문법·해석 수업과 무엇이 다른가요?</span>
+            <span class="material-icons faq-icon" aria-hidden="true">add</span>
+          </button>
+          <div class="faq-answer" id="faq-a1" hidden>
+            <p>UNIQUE는 문장을 쪼개는 방식이 아니라 글의 구조와 출제 의도를 먼저 읽고, 그 구조 위에서 답을 도출하는 사고 훈련을 제공합니다.</p>
+          </div>
+        </div>
+
+        <div class="faq-item card reveal">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a2">
+            <span>국제학교·유학은 어떻게 관리되나요?</span>
+            <span class="material-icons faq-icon" aria-hidden="true">add</span>
+          </button>
+          <div class="faq-answer" id="faq-a2" hidden>
+            <p>학교/국가별 요구 기준을 분석하고, 학업 성취·활동 설계·서류 완성도를 하나의 로드맵으로 통합 관리합니다.</p>
+          </div>
+        </div>
+
+        <div class="faq-item card reveal">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-a3">
+            <span>AI가 수업을 대신하나요?</span>
+            <span class="material-icons faq-icon" aria-hidden="true">add</span>
+          </button>
+          <div class="faq-answer" id="faq-a3" hidden>
+            <p>AI는 학습 데이터를 분석해 관리 정확도를 높입니다. 수업과 전략 설계, 피드백은 검증된 강사진이 책임집니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="final-cta" class="section final-cta">
+    <div class="container">
+      <h2>대입의 관문, 구조적으로 관리받고 싶다면 UNIQUE와 함께하십시오.</h2>
+      <p class="muted">유선 상담 또는 카카오톡 채널로 빠르게 문의하실 수 있습니다.</p>
+      <div class="cta-row">
+        <a href="tel:01067510320" class="cta-button">유선 상담</a>
+        <a href="http://pf.kakao.com/_RPMLG/chat" class="cta-button cta-secondary" target="_blank" rel="noopener">카카오톡 문의</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="muted tiny">© UNIQUE. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

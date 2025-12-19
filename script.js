@@ -1,152 +1,153 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // ----------------------------------------------------
-    // FAQ 아코디언 기능
-    // ----------------------------------------------------
-    document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const targetId = question.getAttribute('data-target');
-            const answer = document.getElementById(targetId);
-            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+(() => {
+  const $ = (sel, parent = document) => parent.querySelector(sel);
+  const $$ = (sel, parent = document) => Array.from(parent.querySelectorAll(sel));
 
-            // 다른 열린 항목 닫기
-            document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
-                if (openAnswer.id !== targetId) {
-                    openAnswer.classList.remove('open');
-                    openAnswer.setAttribute('aria-hidden', 'true');
-                    document.querySelector(`[data-target="${openAnswer.id}"]`).setAttribute('aria-expanded', 'false');
-                }
-            });
+  // Navbar scroll state
+  const navbar = $("#navbar");
+  const onScroll = () => {
+    if (!navbar) return;
+    navbar.classList.toggle("is-scrolled", window.scrollY > 6);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-            // 현재 항목 토글
-            question.setAttribute('aria-expanded', !isExpanded);
-            answer.setAttribute('aria-hidden', isExpanded);
-            answer.classList.toggle('open');
+  // Reveal on scroll
+  const revealEls = $$(".reveal");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            obs.unobserve(e.target);
+          }
         });
-    });
+      },
+      { threshold: 0.15 }
+    );
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  }
 
-    // ----------------------------------------------------
-    // Hero 타이핑 애니메이션
-    // ----------------------------------------------------
-    const typingTexts = ["입시 전략", "학습 우선순위", "다음 2주 학습 계획", "위험 과목 패턴"];
-    const typingOutput = document.getElementById('typing-output');
-    let textIndex = 0;
+  // Typing effect (include global track items)
+  const typingOutput = $("#typing-output");
+  const typingPhrases = [
+    "이해도 기반 개념 관리",
+    "취약 영역 개선 우선순위",
+    "개인 맞춤 문제지 생성",
+    "국제 트랙 기준 체크리스트",
+    "서류 완성도 관리 포인트"
+  ];
+
+  function typeLoop(el, phrases, speed = 38, pause = 850) {
+    if (!el) return;
+
+    let phraseIndex = 0;
     let charIndex = 0;
-    const typingSpeed = 100;
-    const erasingSpeed = 50;
-    const newTextDelay = 1000;
+    let direction = 1; // 1 typing, -1 deleting
+    let lastSwitch = Date.now();
 
-    function type() {
-        if (charIndex < typingTexts[textIndex].length) {
-            typingOutput.textContent += typingTexts[textIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, typingSpeed);
-        } else {
-            setTimeout(erase, newTextDelay);
-        }
-    }
+    const tick = () => {
+      const now = Date.now();
+      const current = phrases[phraseIndex];
 
-    function erase() {
-        if (charIndex > 0) {
-            typingOutput.textContent = typingTexts[textIndex].substring(0, charIndex - 1);
-            charIndex--;
-            setTimeout(erase, erasingSpeed);
-        } else {
-            textIndex = (textIndex + 1) % typingTexts.length;
-            setTimeout(type, 500);
-        }
-    }
+      if (direction === 1 && charIndex === current.length) {
+        if (now - lastSwitch < pause) return requestAnimationFrame(tick);
+        direction = -1;
+        lastSwitch = now;
+        return requestAnimationFrame(tick);
+      }
 
-    // Hero 애니메이션 시작
-    type();
+      if (direction === -1 && charIndex === 0) {
+        if (now - lastSwitch < 260) return requestAnimationFrame(tick);
+        direction = 1;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        lastSwitch = now;
+        return requestAnimationFrame(tick);
+      }
 
-    // ----------------------------------------------------
-    // 숫자 Count-up 애니메이션
-    // ----------------------------------------------------
-    function countUp(el) {
-        const target = parseInt(el.getAttribute('data-target'));
-        const unit = el.getAttribute('data-unit') || '';
-        let current = 0;
-        const duration = 1500;
-        const stepTime = 10;
-        const step = target / (duration / stepTime);
+      charIndex += direction;
+      el.textContent = current.slice(0, charIndex);
+      setTimeout(tick, speed);
+    };
 
-        const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            // 천 단위 쉼표 포맷팅
-            el.textContent = Math.floor(current).toLocaleString() + unit;
-        }, stepTime);
-    }
+    tick();
+  }
+  typeLoop(typingOutput, typingPhrases);
 
-    // ----------------------------------------------------
-    // 스크롤 인터랙션 (섹션 fade-in, 카드 slide-in, Count-up, How It Works SVG)
-    // ----------------------------------------------------
-    const sections = document.querySelectorAll('section');
-    const countUpTargets = document.querySelectorAll('.count-up-target');
-    const flowLinePath = document.getElementById('flow-line-path');
+  // Count-up numbers
+  const targets = $$(".count-up-target");
+  const started = new WeakSet();
 
-    // 서비스 카드 초기 설정 (slide-in-up을 위해)
-    document.querySelectorAll('.service-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(50px)';
-    });
+  function animateCount(el, duration = 900) {
+    const target = Number(el.dataset.target || "0");
+    const unit = el.dataset.unit || "";
+    const startTime = performance.now();
 
-    const sectionObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const section = entry.target;
-                
-                // 1. 섹션 Fade-in
-                section.classList.add('is-visible');
+    const format = (v) => Math.round(v).toLocaleString("ko-KR") + unit;
 
-                // 2. Count-up 실행 (Hero 섹션)
-                if (section.id === 'hero' || section.id === 'why-uniq') {
-                    countUpTargets.forEach(el => {
-                        if (!el.dataset.counted && section.contains(el)) {
-                            countUp(el);
-                            el.dataset.counted = 'true';
-                        }
-                    });
-                }
+    const step = (t) => {
+      const p = Math.min((t - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const value = target * eased;
+      el.textContent = format(value);
+      if (p < 1) requestAnimationFrame(step);
+    };
 
-                // 3. 서비스 카드 등장 모션 슬라이드 인
-                if (section.id === 'services') {
-                    document.querySelectorAll('#services .service-card').forEach((card, index) => {
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, index * 200);
-                    });
-                }
-                
-                // 4. How It Works SVG 라인 애니메이션
-                if (section.id === 'how-it-works' && flowLinePath) {
-                    flowLinePath.style.strokeDashoffset = '0';
-                }
+    requestAnimationFrame(step);
+  }
 
-                // 관찰 중지
-                observer.unobserve(section);
-            }
+  if ("IntersectionObserver" in window && targets.length) {
+    const ioCount = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          if (started.has(el)) return;
+          started.add(el);
+          animateCount(el);
+          obs.unobserve(el);
         });
-    }, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1 // 10%가 보이면 실행
-    });
+      },
+      { threshold: 0.4 }
+    );
+    targets.forEach((el) => ioCount.observe(el));
+  } else {
+    targets.forEach((el) => animateCount(el, 700));
+  }
 
-    sections.forEach(section => {
-        if (section.id !== 'hero' && section.id !== 'final-cta') {
-            sectionObserver.observe(section);
-        }
-    });
+  // FAQ accordion (single open)
+  const faqItems = $$(".faq-item");
+  faqItems.forEach((item) => {
+    const btn = $(".faq-question", item);
+    const answerId = btn?.getAttribute("aria-controls");
+    const answer = answerId ? $("#" + CSS.escape(answerId)) : null;
 
-    // SVG Line 초기 상태 설정 (애니메이션을 위해)
-    if (flowLinePath) {
-        const pathLength = flowLinePath.getTotalLength ? flowLinePath.getTotalLength() : 1000;
-        flowLinePath.style.strokeDasharray = pathLength;
-        flowLinePath.style.strokeDashoffset = pathLength;
-    }
-});
+    if (!btn || !answer) return;
+
+    item.setAttribute("aria-expanded", "false");
+    btn.setAttribute("aria-expanded", "false");
+    answer.hidden = true;
+
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+      faqItems.forEach((it) => {
+        const b = $(".faq-question", it);
+        const aid = b?.getAttribute("aria-controls");
+        const a = aid ? $("#" + CSS.escape(aid)) : null;
+        if (!b || !a) return;
+        it.setAttribute("aria-expanded", "false");
+        b.setAttribute("aria-expanded", "false");
+        a.hidden = true;
+      });
+
+      if (!isOpen) {
+        item.setAttribute("aria-expanded", "true");
+        btn.setAttribute("aria-expanded", "true");
+        answer.hidden = false;
+      }
+    });
+  });
+})();
