@@ -1,0 +1,7 @@
+PNG 이미지 교체 위치
+- assets/images/favicon.png : 192x192px
+- assets/images/apple-touch-icon.png : 180x180px
+- assets/images/og-image.png : 1200x630px
+
+현재 포함된 이미지는 경로 확인용 임시 이미지입니다. 동일한 파일명으로 교체하세요.
+운영 도메인이 https://itsunique.kr 이 아니라면 HTML canonical/og:url/og:image, robots.txt, sitemap.xml의 도메인을 함께 변경하세요.
